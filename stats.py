@@ -20,7 +20,7 @@ def sort_on(dict):
 def sort_dict(dict): #takes a dict of char : count(int) and returns a list of dicts {"char": char, "count": int} that are alpha char only, and sorted by "count"
     dict_list = []
     for char in dict:
-        if char.isalpha() == True:
+        #if char.isalpha() == True:
             dict_list.append({"char" : char, "count" : dict[char]})
     dict_list.sort(reverse=True, key=sort_on)
     return dict_list
