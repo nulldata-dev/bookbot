@@ -1,3 +1,4 @@
+import sys
 from stats import count_words
 from stats import count_char
 from stats import sort_dict
@@ -17,15 +18,19 @@ def char_count_format(book): #takes the entire text of a book as a string and re
     return output
 
 def main():
-    path = "./books/frankenstein.txt" #store the path to the current book
-    book = get_book_text(path) #store the complete text of the book in a string
-    #BOOKBOT main program
-    print("============ BOOKBOT ============")
-    print(f"Analyzing book found at {path}...")
-    print("----------- Word Count ----------")
-    print(f"Found {count_words(book)} total words")
-    print("--------- Character Count -------")
-    print(char_count_format(book))
-    print("============= END ===============")
+    if len(sys.argv) == 2: #make sure the program is called properly
+        path = sys.argv[1] #store the path to the current book
+        book = get_book_text(path) #store the complete text of the book in a string
+        #BOOKBOT main program
+        print("============ BOOKBOT ============")
+        print(f"Analyzing book found at {path}...")
+        print("----------- Word Count ----------")
+        print(f"Found {count_words(book)} total words")
+        print("--------- Character Count -------")
+        print(char_count_format(book))
+        print("============= END ===============")
+    else: #if an improper number of arg's are used print error message and exit with code 1
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
 
 main()
